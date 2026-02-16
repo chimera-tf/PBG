@@ -42,11 +42,12 @@ def part_generation(pellet_key,x_y_range,phi_range,top,vectors):
 
     for i in range(numb):
         if pellet_key == 0:
-            
-            bpy.ops.mesh.primitive_uv_sphere_add(segments=28,
-                                             ring_count=28,
-                                             size = parameters.particle_radius,
-                                             location = (x[i],y[i],z[i]))
+            if i % 10 == 0:
+                print(f"generating {i}/{numb} spheres")
+            bpy.ops.mesh.primitive_uv_sphere_add(segments=28, 
+                                                 ring_count=28, 
+                                                 radius = parameters.particle_radius, 
+                                                 location = (x[i],y[i],z[i]))
                                              
         elif pellet_key == 1:
 
@@ -110,7 +111,7 @@ def tube_generation(cyl_radius, cyl_depth):
     obj_new.mode_set(mode = 'OBJECT')
     obj_new.modifier_add( type = 'SOLIDIFY')
     bpy.context.object.modifiers["Solidify"].thickness  = 0.02
-    obj_new.modifier_apply(apply_as = 'DATA', modifier = "Solidify")
+    obj_new.modifier_apply( modifier = "Solidify")
     bpy.ops.rigidbody.object_add(type = 'PASSIVE')
     obj = bpy.context.object.rigid_body
     obj.collision_shape = 'MESH'
@@ -118,9 +119,13 @@ def tube_generation(cyl_radius, cyl_depth):
     obj.restitution = 0.1
     obj.use_margin = parameters.use_margin
     obj.collision_margin = parameters.collision_margin
+    
     #activating split impulse
+
     bpy.context.scene.rigidbody_world.enabled = True
     bpy.context.scene.rigidbody_world.use_split_impulse = True
-    bpy.context.scene.rigidbody_world.steps_per_second = 200
+    bpy.context.scene.rigidbody_world.substeps_per_frame = 200
     bpy.context.scene.rigidbody_world.solver_iterations = 200
-    
+
+"""Deleted line bpy.context.scen.rigidbody_world.step_per_seconds = 200"""
+

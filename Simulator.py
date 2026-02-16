@@ -31,6 +31,8 @@ def rigidbody_simulation(Particle_type, last_particle_drop_frame):
         vectors = three_holes_coor()
     else:
         vectors=[]
+
+    print('tovawuzhurrrrrrr')
     i = 0
     for i in range(last_particle_drop_frame):
         if (simulation_current_frame % 10) == 0.0:

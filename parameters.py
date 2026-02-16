@@ -9,22 +9,23 @@
 Particle_type = 'sphere'
 
 ##Tube's dimensions
-# Raduis of the Tube
+# Radius of the Tube
 cyl_radius = 6
 # Length of the Tube
 #Warning! This is not the length of the packing. The packing length depends on number of particles. However, this should be in a safe-side to avoid an overload!
-cyl_depth = 50
+cyl_depth = 30
 
-
+print('imtired')
 ## Particles Properties
 #Number of Particles
-number_of_particle = 70
+number_of_particle = 10
 #Particle radius !! in case of Rashig Ring this is outer radius
 particle_radius = 1
 #particle innter radius for extruded geometries
 particle_inner_radius = 0.6
 #Particle Length (for cylinders, in case of spheres leave it as default)
 particle_length = 4.5
+
 
 
 ## Rigidbody Properties
@@ -53,7 +54,7 @@ angle_dist = True
 #Where do you want to save the angle_dist results?
 file_name ='500_fh_N=6.txt'
 #Where to save the blender working file? this file gives access to the packing with discrete particles
-blender_file_path = "\\working_bed_X.blend"
+blender_file_path = "\\working_bed_tov.blend"
 ## Stl Export properties
 file_path = "500_tri_N=4.7.stl"
 ## Stl Export for capped geometry in case of spherical particles
