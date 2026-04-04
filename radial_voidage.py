@@ -1,13 +1,14 @@
-import bpy  
-from mathutils import Vector  
-from mathutils.bvhtree import BVHTree  
-import numpy as np
+import bpy
 import math
 import os
 import parameters 
+import numpy as np  
+from mathutils import Vector  
+from mathutils.bvhtree import BVHTree  
+
 
 ###### function q_inside checks if a point is inside the "solid" packing based on ray-casting algorithm ###
-###### ray casting algorithm can be mathematically proved by Jordan curve theorm #########
+###### ray casting algorithm can be mathematically proved by Jordan curve theorem #########
 def q_inside(obj, point_in_object_space):  
  
  direction = Vector((1,0,0))  

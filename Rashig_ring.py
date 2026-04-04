@@ -1,3 +1,5 @@
+#Not accessed unless using rashig rings in packing simulation
+
 def Rashig_ring(outer_radius, inner_radius, depth, location, rotation):
     import numpy as np
     import math

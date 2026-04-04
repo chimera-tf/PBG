@@ -14,9 +14,10 @@ import numpy as np
 x=[]
 y=[]
 z=[]
-
+# generates five objects every time it is  called
+# choosing a random location to drop from in i range, close to top of cylinder
 def part_generation(pellet_key,x_y_range,phi_range,top,vectors):
-
+    PARTS = 5
     from Rashig_ring import Rashig_ring
     #from fpoint_star import fpoint_star
     #from three_holes import three_holes_generator
@@ -25,25 +26,22 @@ def part_generation(pellet_key,x_y_range,phi_range,top,vectors):
     #from quadrilobes import quadrilobes_generator
     #from spheres_fh import sphere_4holes_generator
 
-    if len(x_y_range) < 5:
+    if len(x_y_range) < PARTS:
         pop_2 = list(np.arange(-1,1,0.3))
-        x = random.sample(pop_2,5)
-        y = random.sample(pop_2,5)
-        numb = 5
+        x = random.sample(pop_2,PARTS)
+        y = random.sample(pop_2,PARTS)
     else: 
-        x = random.sample(x_y_range, 5)
-        y = random.sample(x_y_range, 5)
-        numb = 5
-    z = random.sample(range(top, top + 8),5)
-    x_r = random.sample(phi_range, 5)
-    y_r = random.sample(phi_range, 5)
-    z_r = random.sample(phi_range, 5) 
+        x = random.sample(x_y_range, PARTS)
+        y = random.sample(x_y_range, PARTS)
+    z = random.sample(range(top, top + 8),PARTS)
+    x_r = random.sample(phi_range, PARTS)
+    y_r = random.sample(phi_range, PARTS)
+    z_r = random.sample(phi_range, PARTS) 
 
 
-    for i in range(numb):
+    for i in range(PARTS):
         if pellet_key == 0:
-            if i % 10 == 0:
-                print(f"generating {i}/{numb} spheres")
+            print(f"generating {i+1}/{PARTS} spheres")
             bpy.ops.mesh.primitive_uv_sphere_add(segments=28, 
                                                  ring_count=28, 
                                                  radius = parameters.particle_radius, 
@@ -126,6 +124,4 @@ def tube_generation(cyl_radius, cyl_depth):
     bpy.context.scene.rigidbody_world.use_split_impulse = True
     bpy.context.scene.rigidbody_world.substeps_per_frame = 200
     bpy.context.scene.rigidbody_world.solver_iterations = 200
-
-"""Deleted line bpy.context.scen.rigidbody_world.step_per_seconds = 200"""
-
+    bpy.context.scene.gravity = (0.0, 0.0, -20.0)

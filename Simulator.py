@@ -12,8 +12,10 @@ import parameters
 def rigidbody_simulation(Particle_type, last_particle_drop_frame):
     from Rigidbody_generator import part_generation
     import numpy as np
+    
     co_max = 0.6*parameters.cyl_radius - parameters.particle_radius
     co_min = -1.0 * co_max
+    #The current depth is 30, thus the answer to this is negative, is this a problem?
     top = round((parameters.cyl_depth/4) - 10)
     interval =  parameters.particle_radius
     x_y_range = list(np.arange(co_min,co_max,interval))
@@ -23,6 +25,7 @@ def rigidbody_simulation(Particle_type, last_particle_drop_frame):
     simulation_current_frame = 1
 #    scene = bpy.context.scene
 #    fp = scene.render.filepath
+
     if pellet_key == 4:
         from fh import four_holes_coor
         vectors = four_holes_coor()
@@ -31,10 +34,9 @@ def rigidbody_simulation(Particle_type, last_particle_drop_frame):
         vectors = three_holes_coor()
     else:
         vectors=[]
-
-    print('tovawuzhurrrrrrr')
     i = 0
     for i in range(last_particle_drop_frame):
+        # generate 5 spheres every tenth frame
         if (simulation_current_frame % 10) == 0.0:
             part_generation(pellet_key,x_y_range,phi_range,top,vectors)
         
@@ -62,12 +64,12 @@ def steady_state(simulation_current_frame):
  #   fp = scene.render.filepath
  #   i = simulation_current_frame
     while ( Stop == False ):
-            
+       
         i = 0
         for obj in bpy.context.selected_objects:
             current_obj = obj
             x[i],y[i],z[i] = obj.matrix_world.translation
-            d[i]=(((((x[i]-x_prev[i])**2))+(((y[i]-y_prev[i])**2))+(((z[i]-z_prev[i])**22)))**0.5)
+            d[i]=(((((x[i]-x_prev[i])**2))+(((y[i]-y_prev[i])**2))+(((z[i]-z_prev[i])**2)))**0.5)
             x_prev[i],y_prev[i],z_prev[i] = x[i],y[i],z[i]
             i = i+1
         if max(d) < 0.05:
@@ -76,6 +78,6 @@ def steady_state(simulation_current_frame):
 #        scene.render.filepath = fp + str(simulation_current_frame)
 #        bpy.ops.render.render(write_still=True)
         simulation_current_frame += 1
-
+    print(f"Last frame in steady state {simulation_current_frame}")
     return(d)
 
