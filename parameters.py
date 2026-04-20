@@ -3,15 +3,25 @@
 ##Heat and Mass Transfer Lab
 ##Worcester Polytechnic Institute
 
-#Defining parameters for the simulation: note that the default unit is meters for the objects 
-   
-# defining particle type, valid types: 'sphere', 'cylinder', 'Raschig Ring', 'f_point_star', 'three_holes', 'four_holes', 'tri_lobes', 'quadrilobes', 'four_hole_sphere'
-Particle_type = 'sphere'
+#Defining parameters for the simulation: note that the default unit is meters for the object 
+import bpy
+
+obj_name = 'stl_particle_001'
+print(f"Imported: {obj_name}")      
+mesh = bpy.data.meshes.new(obj_name)
+new_obj = bpy.data.objects.new('stl_particle_001', mesh)
+bpy.context.collection.objects.link(new_obj)
+
+# defining particle type, valid types: 'sphere', 'cylinder', 'Raschig Ring', 
+# 'f_point_star', 'three_holes', 'four_holes', 'tri_lobes', 'quadrilobes', 
+# 'four_hole_sphere', 'stl_particle_001'
+
+Particle_type = 'stl_particle_001'
 
 #Tube's dimensions
 
 # Radius of the Tube
-cyl_radius = 6
+cyl_radius = 5
 # Length of the Tube
 #Warning! This is not the length of the packing. The packing length depends on number of particles. However, this should be in a safe-side to avoid an overload!
 cyl_depth = 30
@@ -21,11 +31,11 @@ cyl_depth = 30
 #Number of Particles
 number_of_particle = 5
 #Particle radius !! in case of Rashig Ring this is outer radius
-particle_radius = 1
-#particle inner radius for extruded geometries
-particle_inner_radius = 0.6
-#Particle Length (for cylinders, in case of spheres leave it as default)
-particle_length = 4.5
+particle_radius = 1.675
+# #particle inner radius for extruded geometries
+# particle_inner_radius = 0.6
+# #Particle Length (for cylinders, in case of spheres leave it as default)
+# particle_length = 4.5
 
 
 

@@ -44,8 +44,9 @@ print("Welcome to the generator")
 print("Initializing the parameters ...")
 
 #Geometry input parameters
-Particle_type = str()
+Particle_type = str() 
 Particle_type = parameters.Particle_type
+print(f"The chosen particle type is: {Particle_type}")
 cyl_radius = parameters.cyl_radius
 cyl_depth = parameters.cyl_depth
 number_of_particle = parameters.number_of_particle
@@ -67,7 +68,7 @@ else:
 
 #generating the particles and filling up the tube
 print("Filling up the bed....")
-print("Solver iterations per step: ",bpy.context.scene.rigidbody_world.solver_iterations) 
+print("Solver iterations per step: ", bpy.context.scene.rigidbody_world.solver_iterations) 
 simulation_current_frame = rigidbody_simulation(Particle_type, last_particle_drop_frame)
 
 bpy.ops.object.select_by_type( type = 'MESH')
@@ -78,14 +79,17 @@ distance=steady_state(simulation_current_frame)
 print(f"distance: {distance}")
 bpy.ops.object.select_all(action = 'TOGGLE') 
 
-#can I export here as a STL if all are selected?
-
 #removing the container
 
-# if parameters.remove_the_tube == True:
-#     bpy.data.objects['Cylinder'].select = True
-#     bpy.ops.object.delete(use_global = False)
-
+if parameters.remove_the_tube == True:
+    obj_name = "Cylinder"
+    if obj_name in bpy.data.objects:
+            bpy.data.objects[obj_name].select_set(True)
+            #Delete the selected object
+            bpy.ops.object.delete()
+    else:
+            print(f"Object '{obj_name}' not found.")
+            
 #Do we want to get the angle distribution? if so, in parameters.py set the angle_dist to True
 
 # if parameters.angle_dist == True:

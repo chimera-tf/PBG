@@ -20,7 +20,9 @@ def rigidbody_simulation(Particle_type, last_particle_drop_frame):
     interval =  parameters.particle_radius
     x_y_range = list(np.arange(co_min,co_max,interval))
     phi_range = list(np.arange(0.0,6.28,0.5))
-    pellet = {'sphere' : 0, 'cylinder' : 1, 'Raschig Ring':2, 'f_point_star':3, 'four_holes':4, 'three_holes':5, 'tri_lobes': 6, 'quadrilobes' : 7, 'four_hole_sphere' :8}
+    pellet = {'sphere' : 0, 'cylinder' : 1, 'Raschig Ring':2, 'f_point_star':3, 
+              'four_holes':4, 'three_holes':5, 'tri_lobes': 6, 'quadrilobes' : 7, 
+              'four_hole_sphere' :8, 'stl_particle_001' :9}
     pellet_key = pellet[Particle_type]
     simulation_current_frame = 1
 #    scene = bpy.context.scene
@@ -34,6 +36,7 @@ def rigidbody_simulation(Particle_type, last_particle_drop_frame):
         vectors = three_holes_coor()
     else:
         vectors=[]
+        
     i = 0
     for i in range(last_particle_drop_frame):
         # generate 5 spheres every tenth frame
@@ -74,6 +77,9 @@ def steady_state(simulation_current_frame):
             i = i+1
         if max(d) < 0.05:
             Stop = True
+        if max(d) > 20 :
+            Stop = True
+            print("A particle has escaped the tube and the simulation was terminated.")
         bpy.context.scene.frame_set(frame = simulation_current_frame)
 #        scene.render.filepath = fp + str(simulation_current_frame)
 #        bpy.ops.render.render(write_still=True)
