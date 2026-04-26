@@ -29,7 +29,7 @@ cyl_depth = 30
 #Particles Properties
 
 #Number of Particles
-number_of_particle = 5
+number_of_particle = 15
 #Particle radius !! in case of Rashig Ring this is outer radius
 particle_radius = 1.675
 # #particle inner radius for extruded geometries
@@ -53,7 +53,8 @@ use_margin = True
 collision_margin = 0.0
 #linear_deactivation(linear deactivation velocity)
 
-#linear_damping(amount of linear velicity particle is lost over time)
+#linear_damping(amount of linear velocity particle is lost over time)
+#where is this value assigned
 linear_damping = 0.2
 #rotational_damping
 rotational_damping = 0.1

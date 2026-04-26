@@ -50,7 +50,9 @@ def part_generation(pellet_key,x_y_range,phi_range,top,vectors):
         elif pellet_key == 9:
             print(f"generating {i+1}/{PARTS} particles")
             #on linux ./whatever name
-            stl_particle_001 = bpy.ops.wm.stl_import(filepath=r"C:\Users\tovao\Documents\Spring Semester 2026\ECHM 490IR\Beds_Blender_and_stl\Scale_up_stl_particle_001.stl")
+#            stl_particle_001 = bpy.ops.wm.stl_import(filepath=r"C:\Users\tovao\Documents\Spring Semester 2026\ECHM 490IR\Beds_Blender_and_stl\Scale_up_stl_particle_001.stl")
+            stl_particle_001 = bpy.ops.wm.stl_import(filepath=r"./Scale_up_stl_particle_001.stl")
+
             obj = bpy.context.active_object
             # Set the location (X, Y, Z)
             obj.location = (x[i],y[i],z[i])
