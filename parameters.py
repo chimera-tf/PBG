@@ -6,11 +6,11 @@
 #Defining parameters for the simulation: note that the default unit is meters for the object 
 import bpy
 
-obj_name = 'stl_particle_001'
-print(f"Imported: {obj_name}")      
-mesh = bpy.data.meshes.new(obj_name)
-new_obj = bpy.data.objects.new('stl_particle_001', mesh)
-bpy.context.collection.objects.link(new_obj)
+# obj_name = 'stl_particle_001'
+# print(f"Imported: {obj_name}")      
+# mesh = bpy.data.meshes.new(obj_name)
+# new_obj = bpy.data.objects.new('stl_particle_001', mesh)
+# bpy.context.collection.objects.link(new_obj)
 
 # defining particle type, valid types: 'sphere', 'cylinder', 'Raschig Ring', 
 # 'f_point_star', 'three_holes', 'four_holes', 'tri_lobes', 'quadrilobes', 
@@ -57,9 +57,9 @@ collision_margin = 0.0
 #where is this value assigned
 linear_damping = 0.8
 #rotational_damping
-rotational_damping = 0.4
+rotational_damping = 0.8
 #also damping factor for colllisons between particles [0-1]
-#damping_factor = 0.8
+damping_factor = 0.8
 
 
 #Do you want to remove the tube after simulation?
