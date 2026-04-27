@@ -8,6 +8,9 @@
 import bpy
 import math
 import parameters
+import logging
+logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
+
 
 def rigidbody_simulation(Particle_type, last_particle_drop_frame):
     from Rigidbody_generator import part_generation
@@ -53,7 +56,7 @@ def rigidbody_simulation(Particle_type, last_particle_drop_frame):
 
 
 def steady_state(simulation_current_frame):
-    
+    logging.info(f"steady_state called with {simulation_current_frame}.")
     size= len(bpy.context.selected_objects)
     x = [0]*size
     y = [0]*size
@@ -70,20 +73,25 @@ def steady_state(simulation_current_frame):
        
         i = 0
         for obj in bpy.context.selected_objects:
+            logging.info(f"steady_state i: {i} obj: {obj}.")
             current_obj = obj
             x[i],y[i],z[i] = obj.matrix_world.translation
             d[i]=(((((x[i]-x_prev[i])**2))+(((y[i]-y_prev[i])**2))+(((z[i]-z_prev[i])**2)))**0.5)
             x_prev[i],y_prev[i],z_prev[i] = x[i],y[i],z[i]
             i = i+1
         if max(d) < 0.05:
+            logging.info(f"steady_state stopping max(d): {max(d)}.")
             Stop = True
-        if max(d) > 20 :
+        elif max(d) > 20 :
+            logging.error(f"steady_state stopping due to escaped particle max(d): {max(d)}.")
             Stop = True
             print("A particle has escaped the tube and the simulation was terminated.")
+        logging.info(f"steady_state continuing max(d): {max(d)}.")
         bpy.context.scene.frame_set(frame = simulation_current_frame)
 #        scene.render.filepath = fp + str(simulation_current_frame)
 #        bpy.ops.render.render(write_still=True)
         simulation_current_frame += 1
+        logging.info(f"steady_state advancing frame: {simulation_current_frame}.")
     print(f"Last frame in steady state {simulation_current_frame}")
     return(d)
 

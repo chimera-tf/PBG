@@ -55,9 +55,12 @@ collision_margin = 0.0
 
 #linear_damping(amount of linear velocity particle is lost over time)
 #where is this value assigned
-linear_damping = 0.2
+linear_damping = 0.8
 #rotational_damping
-rotational_damping = 0.1
+rotational_damping = 0.4
+#also damping factor for colllisons between particles [0-1]
+#damping_factor = 0.8
+
 
 #Do you want to remove the tube after simulation?
 remove_the_tube = True
