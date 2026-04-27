@@ -24,12 +24,12 @@ Particle_type = 'stl_particle_001'
 cyl_radius = 5
 # Length of the Tube
 #Warning! This is not the length of the packing. The packing length depends on number of particles. However, this should be in a safe-side to avoid an overload!
-cyl_depth = 30
+cyl_depth = 60
 
 #Particles Properties
 
 #Number of Particles
-number_of_particle = 15
+number_of_particle = 30
 #Particle radius !! in case of Rashig Ring this is outer radius
 particle_radius = 1.675
 # #particle inner radius for extruded geometries
