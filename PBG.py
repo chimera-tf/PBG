@@ -130,5 +130,4 @@ print(f"Exported .stl file as: {parameters.file_path} ")
 print("Done!")
 print("Goodbye!")
 
-# #email command : only valid using linux
-# your_command ; echo "Done" | mail -s "Command Finished" tova.olive@gmail.com
+

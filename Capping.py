@@ -102,4 +102,4 @@ print("100% of the caps are made...xporting the capped geometry as a STL file...
 
 bpy.ops.export_mesh.stl(filepath=parameters.file_path_capped, check_existing=True, axis_forward='Y', axis_up='Z', filter_glob= ".STL", global_scale=1, ascii=False, use_mesh_modifiers=True)
 
-print('Capping procedure is finnished, and the STL file is saved in the selected directory! Have a nice day! :)')
+print('Capping procedure is finished, and the STL file is saved in the selected directory! Have a nice day! :)')

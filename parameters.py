@@ -6,12 +6,6 @@
 #Defining parameters for the simulation: note that the default unit is meters for the object 
 import bpy
 
-# obj_name = 'stl_particle_001'
-# print(f"Imported: {obj_name}")      
-# mesh = bpy.data.meshes.new(obj_name)
-# new_obj = bpy.data.objects.new('stl_particle_001', mesh)
-# bpy.context.collection.objects.link(new_obj)
-
 # defining particle type, valid types: 'sphere', 'cylinder', 'Raschig Ring', 
 # 'f_point_star', 'three_holes', 'four_holes', 'tri_lobes', 'quadrilobes', 
 # 'four_hole_sphere', 'stl_particle_001'
@@ -24,12 +18,12 @@ Particle_type = 'stl_particle_001'
 cyl_radius = 5
 # Length of the Tube
 #Warning! This is not the length of the packing. The packing length depends on number of particles. However, this should be in a safe-side to avoid an overload!
-cyl_depth = 60
+cyl_depth = 30
 
 #Particles Properties
 
 #Number of Particles
-number_of_particle = 30
+number_of_particle = 5
 #Particle radius !! in case of Rashig Ring this is outer radius
 particle_radius = 1.675
 # #particle inner radius for extruded geometries
@@ -70,9 +64,9 @@ angle_dist = True
 #Where do you want to save the angle_dist results?
 file_name ='500_fh_N=6.txt'
 #Where to save the blender working file? this file gives access to the packing with discrete particles
-blender_file_path = "\\working_bed_tov.blend"
+blender_file_path = "\\working_bed_not_settled.blend"
 ## .stl Export properties
-file_path = "bed_export_tov.stl"
+file_path = "bed_export_settled.stl"
 ## .stl Export for capped geometry in case of spherical particles
 file_path_capped = "\capped_bed.stl"
 ## Where do you want to save the radial voidage results?

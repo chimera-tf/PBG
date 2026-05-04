@@ -82,6 +82,8 @@ def steady_state(simulation_current_frame):
         if max(d) < 0.4:
             logging.info(f"steady_state stopping max(d): {max(d)}.")
             Stop = True
+            #note: the below is a kill switch for the code to prevent extensive run time for falling particles
+            #change the max(d) value if the cylinder is long and there is chance of large distances in falling simulation 
         elif max(d) > 20 :
             logging.error(f"steady_state stopping due to escaped particle max(d): {max(d)}.")
             Stop = True
